@@ -48,13 +48,13 @@ class Server:
         assert page > 0
         assert page_size > 0
 
-        output = []
+        start, end = index_range(page, page_size)
 
         with open('Popular_Baby_Names.csv', newline='') as csvfile:
             reader = csv.reader(csvfile)
-            for index, row in enumerate(reader):
-                start, end = index_range(page, page_size)
-                if start <= index <= end:
-                    output.append(row)
+
+            output = [
+                row for idx, row in enumerate(reader) if start <= idx <= end
+            ]
 
         return output
