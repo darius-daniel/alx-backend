@@ -37,6 +37,12 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Returns a list of items from a paginated csv file
+        :param page:
+        :param page_size:
+        :return:
+        """
         assert type(page) is int
         assert type(page_size) is int
         assert page > 0
