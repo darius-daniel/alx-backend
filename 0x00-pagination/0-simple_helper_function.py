@@ -4,7 +4,12 @@ from typing import Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    start: int = (page - 1) * page_size
-    end: int = start + page_size
+    """
+    Returns a tuple containing a start index and an end index
+    :param page:
+    :param page_size: number of items on the page
+    :return: a tuple
+    """
+    start = (page - 1) * page_size
 
-    return start, end
+    return start, start + page_size
