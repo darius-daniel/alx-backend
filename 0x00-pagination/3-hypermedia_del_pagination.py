@@ -41,7 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        
+        Returns a dictionary of the hyper index of a page of contents
         :param index:
         :param page_size:
         :return:
