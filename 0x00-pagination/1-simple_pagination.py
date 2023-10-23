@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""" 0. Simple Helper Function. """
-import math
+""" 1. Simple Pagination. """
 import csv
 from typing import Tuple, List
 
@@ -23,6 +22,9 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """
+        Initialize a new instance of the class
+        """
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -50,11 +52,7 @@ class Server:
 
         start, end = index_range(page, page_size)
 
-        with open('Popular_Baby_Names.csv', newline='') as csvfile:
-            reader = csv.reader(csvfile)
-
-            output = [
-                row for idx, row in enumerate(reader) if start <= idx <= end
-            ]
-
-        return output
+        return [
+            row for idx, row in enumerate(self.dataset())
+            if start <= idx <= end
+        ]
