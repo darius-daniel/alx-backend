@@ -45,10 +45,8 @@ class Server:
         :param page_size:
         :return:
         """
-        assert type(page) is int
-        assert type(page_size) is int
-        assert page > 0
-        assert page_size > 0
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start, end = index_range(page, page_size)
 
