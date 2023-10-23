@@ -52,5 +52,5 @@ class Server:
 
         return [
             row for idx, row in enumerate(self.dataset())
-            if start <= idx <= end
+            if start <= idx < end
         ]
