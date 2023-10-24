@@ -5,6 +5,8 @@ from collections import OrderedDict
 
 
 def get_lru(cache):
+    """ Returns the least recently used key
+    """
     least_recent = min(cache.values())
     print(cache)
     for k, v in cache.items():
