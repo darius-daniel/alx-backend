@@ -34,16 +34,16 @@ class MRUCache(BaseCaching):
 
             self.cache_data[key] = item
 
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            discarded_key = get_mru(self.key_cache)
-            print('DISCARD: {}'.format(discarded_key))
-            del self.cache_data[discarded_key]
-            del self.key_cache[discarded_key]
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                discarded_key = get_mru(self.key_cache)
+                print('DISCARD: {}'.format(discarded_key))
+                del self.cache_data[discarded_key]
+                del self.key_cache[discarded_key]
 
     def get(self, key):
         """ Gets an item by key
         """
-        if key and key not in self.cache_data.keys():
+        if key and key in self.cache_data.keys():
             if not self.key_cache:
                 self.key_cache[key] = 0
             else:
