@@ -45,4 +45,9 @@ class LFUCache(BaseCaching):
         """ Gets an item by key
         """
         if not (key is None or key not in self.cache_data.keys()):
+            if key in self.key_cache.keys():
+                self.key_cache[key] += 1
+            else:
+                self.key_cache[key] = 1
+
             return self.cache_data[key]

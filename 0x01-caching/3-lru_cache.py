@@ -45,4 +45,8 @@ class LRUCache(BaseCaching):
         """ Gets an item by key
         """
         if not (key is None or key not in self.cache_data.keys()):
+            if not self.key_cache:
+                self.key_cache[key] = 0
+            else:
+                self.key_cache[key] = max(list(self.key_cache.values())) + 1
             return self.cache_data[key]
