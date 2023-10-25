@@ -28,10 +28,10 @@ class LFUCache(BaseCaching):
         """ Adds an item in the cache
         """
         if key and item:
-            if key in self.key_cache.keys():
-                self.key_cache[key] += 1
-            else:
+            if not self.key_cache:
                 self.key_cache[key] = 1
+            else:
+                self.key_cache[key] += 1
 
             self.cache_data[key] = item
 
