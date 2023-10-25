@@ -4,6 +4,15 @@ from base_caching import BaseCaching
 from collections import OrderedDict
 
 
+def get_mru(cache):
+    """ Returns the most recently used key
+    """
+    most_recent = sorted(cache.values(), reverse=True)[1]
+    for k, v in cache.items():
+        if v == most_recent:
+            return k
+
+
 class MRUCache(BaseCaching):
     """ LRUCache
     - Inherits from BaseCaching
@@ -26,9 +35,10 @@ class MRUCache(BaseCaching):
             self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            discarded_key, discarded_value = self.key_cache.popitem()
+            discarded_key = get_mru(self.key_cache)
             print('DISCARD: {}'.format(discarded_key))
             del self.cache_data[discarded_key]
+            del self.key_cache[discarded_key]
 
     def get(self, key):
         """ Gets an item by key
