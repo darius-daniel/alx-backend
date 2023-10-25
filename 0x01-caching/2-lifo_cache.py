@@ -20,12 +20,14 @@ class LIFOCache(BaseCaching):
             self.key_cache.append(key)
             self.cache_data[key] = item
 
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            print('DISCARD: {}'.format(self.key_cache[-2]))
-            del self.cache_data[self.key_cache.pop(-2)]
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                print('DISCARD: {}'.format(self.key_cache[-2]))
+                del self.cache_data[self.key_cache.pop(-2)]
 
     def get(self, key):
         """ Gets an item by key
         """
         if key and key not in self.cache_data.keys():
             return self.cache_data[key]
+        else:
+            return None
