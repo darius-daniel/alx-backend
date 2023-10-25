@@ -7,7 +7,7 @@ from collections import OrderedDict
 def get_mru(cache):
     """ Returns the most recently used key
     """
-    least_recent = max(cache.values())
+    least_recent = sorted(cache.values(), reverse=True)[1]
     for k, v in cache.items():
         if v == least_recent:
             return k
@@ -36,7 +36,6 @@ class MRUCache(BaseCaching):
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             discarded_key = get_mru(self.key_cache)
-
             print('DISCARD: {}'.format(discarded_key))
             del self.cache_data[discarded_key]
             del self.key_cache[discarded_key]
