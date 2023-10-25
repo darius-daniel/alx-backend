@@ -7,7 +7,7 @@ from collections import OrderedDict
 def get_lfu(cache):
     """ Returns the least frequently used key
     """
-    least_frequent = sorted(cache.values())[1]
+    least_frequent = min(cache.values())
     print('Cache: {}'.format(cache))
     for k, v in cache.items():
         if v == least_frequent:
@@ -28,10 +28,10 @@ class LFUCache(BaseCaching):
         """ Adds an item in the cache
         """
         if key and item:
-            if not self.key_cache:
-                self.key_cache[key] = 1
-            else:
+            if key in self.key_cache.keys():
                 self.key_cache[key] += 1
+            else:
+                self.key_cache[key] = 1
 
             self.cache_data[key] = item
 
