@@ -5,10 +5,9 @@ from collections import OrderedDict
 
 
 def get_mru(cache):
-    """ Returns the least recently used key
+    """ Returns the most recently used key
     """
     least_recent = max(cache.values())
-    print(cache)
     for k, v in cache.items():
         if v == least_recent:
             return k
