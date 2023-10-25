@@ -18,10 +18,10 @@ class FIFOCache(BaseCaching):
         if key and item:
             self.cache_data[key] = item
 
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            discarded_key = list(self.cache_data.keys())[0]
-            print('DISCARD: {}'.format(discarded_key))
-            del self.cache_data[discarded_key]
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                discarded_key = list(self.cache_data.keys())[0]
+                print('DISCARD: {}'.format(discarded_key))
+                del self.cache_data[discarded_key]
 
     def get(self, key):
         """ Gets an item by key
