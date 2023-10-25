@@ -7,8 +7,7 @@ from collections import OrderedDict
 def get_lfu(cache):
     """ Returns the least frequently used key
     """
-    least_frequent = min(cache.values())
-    print('Cache: {}'.format(cache))
+    least_frequent = sorted(cache.values())[1]
     for k, v in cache.items():
         if v == least_frequent:
             return k
