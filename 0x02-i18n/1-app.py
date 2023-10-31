@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.10
+#!/usr/bin/env python3
 """A script creates a basic Babel app"""
 from flask import Flask, render_template
 from flask_babel import Babel
