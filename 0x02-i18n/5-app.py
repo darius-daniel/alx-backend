@@ -50,6 +50,7 @@ def get_user() -> Union[None, Dict]:
     if user_id:
         return users.get(int(user_id))
 
+
 @app.before_request
 def before_request():
     """Finds a user if any and sets it as a global on flask.g.user"""
