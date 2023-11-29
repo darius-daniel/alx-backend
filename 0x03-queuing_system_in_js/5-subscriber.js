@@ -10,6 +10,6 @@ client.on('message', (channel, message) => {
 
   if (message === 'KILL_SERVER') {
     client.unsubscribe();
-    client.quit()
+    client.quit();
   }
 });

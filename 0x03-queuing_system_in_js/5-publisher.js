@@ -7,7 +7,7 @@ const client = createClient()
 function publishMessage(message, time) {
   console.log(`About to send ${message}`);
   setTimeout(() => {
-    client.publish('holberton school channel', message)
+    client.publish('holberton school channel', message);
   }, time);
 }
 
